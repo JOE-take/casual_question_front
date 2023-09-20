@@ -1,18 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import Home from "./components/Home";
+import Signup from './components/Signup';
+import Login from './components/Login';
 import './App.css';
 
-const Home: React.FC = () => {
-  return <div>ホームページ</div>
-}
-
-const Signup: React.FC = () => {
-  return <div>サインアップ</div>
-}
-
-const Login: React.FC = () => {
-  return <div>ログイン</div>
-}
 
 function App() {
   return (
