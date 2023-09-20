@@ -18,7 +18,7 @@ const Signup: React.FC = () => {
     event.preventDefault();
     try {
       const response = await axios.post('http://127.0.0.1:8080/signup', formData);
-      console.log(response)
+      console.log(response.data)
     } catch (error) {
       console.log('failed to post data to API', error)
     }
