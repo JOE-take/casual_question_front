@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import './App.css';
 
 const Home: React.FC = () => {
@@ -22,11 +22,11 @@ function App() {
           <Link to="/">ホーム</Link> | <Link to="/signup">サインアップ</Link> | <Link to="/login">ログイン</Link>
         </nav>
         
-        <Switch>
+        <Routes>
           <Route path="/" Component={Home} />
           <Route path="/signup" Component={Signup} />
           <Route path="/login" Component={Login} />
-        </Switch>
+        </Routes>
       </div>
     </Router>
   );
