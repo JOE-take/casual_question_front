@@ -13,7 +13,6 @@ function App() {
       <div>
         <nav>
           <Link to={`${process.env.PUBLIC_URL}/`}>ホーム</Link> | <Link to={`${process.env.PUBLIC_URL}/signup`}>サインアップ</Link> | <Link to={`${process.env.PUBLIC_URL}/login`}>ログイン</Link>
-          <Link to={`${process.env.PUBLIC_URL}/channel/123`}>tesuto</Link>
         </nav>
         
         <Routes>
