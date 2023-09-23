@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Home from "./components/Home";
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Channel from './components/Channel';
 import './App.css';
 
 
@@ -15,9 +16,10 @@ function App() {
         </nav>
         
         <Routes>
-          <Route path="/" Component={Home} />
-          <Route path="/signup" Component={Signup} />
-          <Route path="/login" Component={Login} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/Channel/:id" element={<Channel/>} />
         </Routes>
       </div>
     </Router>
