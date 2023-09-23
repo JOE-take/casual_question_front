@@ -12,14 +12,14 @@ function App() {
     <Router>
       <div>
         <nav>
-          <Link to="/">ホーム</Link> | <Link to="/signup">サインアップ</Link> | <Link to="/login">ログイン</Link>
+          <Link to={`${process.env.PUBLIC_URL}/`}>ホーム</Link> | <Link to={`${process.env.PUBLIC_URL}/signup`}>サインアップ</Link> | <Link to={`${process.env.PUBLIC_URL}/login`}>ログイン</Link>
         </nav>
         
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/signup" element={<Signup/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/Channel/:id" element={<Channel/>} />
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Home/>} />
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Signup/>} />
+          <Route path={`${process.env.PUBLIC_URL}/login`} element={<Login/>} />
+          <Route path={`${process.env.PUBLIC_URL}/channel/:id`} element={<Channel/>} />
         </Routes>
       </div>
     </Router>
