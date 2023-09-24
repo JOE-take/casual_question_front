@@ -30,7 +30,6 @@ const navigate = useNavigate()
     } catch (error) {
       console.log('failed to post data to API', error)
       seterrMessage("サインアップに失敗")
-      navigate('/signup')
     }
   };
 
