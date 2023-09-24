@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useUser } from './UserContent';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const Login: React.FC = () => {
   });
 
   const { setUser } = useUser();
+  const navigate = useNavigate();
+  const [errMessage, seterrMessage] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -24,17 +27,20 @@ const Login: React.FC = () => {
         setUser({
           userName: response.data.userName,
           userId: response.data.userId,
-          accessToken: response.data.accessToken 
-          })
+          accessToken: response.data.accessToken
+        })
       }
+      navigate('/')
     } catch (error) {
       console.log('failed to post data to API', error)
+      seterrMessage('ログインに失敗') 
     }
   };
 
   return (
     <div>
       <h1>ログイン</h1>
+      <p>{ errMessage }</p>
       <form onSubmit={handlerSubmit}>
         email:<input type="text" name="email" onChange={handleChange} /><br />
         password:<input type="password" name="password" onChange={handleChange} /><br />
