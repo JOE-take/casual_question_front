@@ -33,14 +33,18 @@ const Login: React.FC = () => {
       navigate('/')
     } catch (error) {
       console.log('failed to post data to API', error)
-      seterrMessage('ログインに失敗') 
+      seterrMessage('ログインに失敗')
+      setFormData({
+        email: '',
+        password: '',
+      });
     }
   };
 
   return (
     <div>
       <h1>ログイン</h1>
-      <p>{ errMessage }</p>
+      <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>
         email:<input type="text" name="email" onChange={handleChange} /><br />
         password:<input type="password" name="password" onChange={handleChange} /><br />

@@ -10,7 +10,7 @@ const Signup: React.FC = () => {
     password: '',
   });
 
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [errMessage, seterrMessage] = useState("");
 
@@ -30,13 +30,18 @@ const navigate = useNavigate()
     } catch (error) {
       console.log('failed to post data to API', error)
       seterrMessage("サインアップに失敗")
+      setFormData({
+        user_name: '',
+        email: '',
+        password: '',
+      });
     }
   };
 
   return (
     <div>
       <h1>サインアップ</h1>
-      <p>{ errMessage }</p>
+      <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>
         name:<input type="text" name="user_name" onChange={handleChange} /><br />
         email:<input type="text" name="email" onChange={handleChange} /><br />
