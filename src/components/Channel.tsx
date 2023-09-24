@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useUser } from './UserContent';
+import UseRefreshToken from './UseRefreshToken';
 
 const Channel: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const [data, setData] = useState<any | null>(null);
+	const { user } = useUser();
+  const refreshAccessToken = UseRefreshToken();
 
 	const fetchData = async () => {
 		try {
-			const response = await axios.get(`http://localhost:8080/channel/${id}`);
+			const response = await axios.get(`https://casualquestion.an.r.appspot.com/channel/${id}`, {
+				headers: {
+					'Authorization': `Bearer ${user.accessToken}`
+				}
+			});
 			setData(response.data);
 		} catch (error) {
-			console.error("Error fetching data:", error);
+			if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
+        await refreshAccessToken();
+				fetchData();
+			}
+			console.error(error);
 		}
 	}
 
