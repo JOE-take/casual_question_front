@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { HashRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { UserProvider } from './components/UserContent';
 import Home from "./components/Home";
@@ -10,6 +11,7 @@ import PostQuestion from './components/PostQuestion';
 import './App.css';
 
 
+axios.defaults.withCredentials = true;
 function App() {
   return (
   <UserProvider>

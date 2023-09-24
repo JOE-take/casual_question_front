@@ -1,9 +1,17 @@
+import { ChildProcessWithoutNullStreams } from 'child_process';
 import React, { createContext, useContext, useState } from 'react';
 
 interface User {
   userName: string | null;
   userId: string | null;
+  accessToken: string | null;
 }
+
+const initialState: User = {
+  userName: null,
+  userId: null,
+  accessToken: null,
+};
 
 interface UserContextProps {
   user: User;
@@ -25,7 +33,7 @@ export const useUser = () => {
 };
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User>({ userName: null, userId: null });
+  const [user, setUser] = useState<User>(initialState);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

@@ -9,7 +9,6 @@ const Login: React.FC = () => {
   });
 
   const { setUser } = useUser();
-  const [accessToken, setAccessToken] = useState<string | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -19,10 +18,14 @@ const Login: React.FC = () => {
   const handlerSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8080/login', formData);
+      const response = await axios.post('http://127.0.0.1:8080/login', formData, {
+      });
       if (response.data && response.data.accessToken) {
-        setAccessToken(response.data.accessToken)
-        setUser({ userName: response.data.userName, userId: response.data.userId })
+        setUser({
+          userName: response.data.userName,
+          userId: response.data.userId,
+          accessToken: response.data.accessToken 
+          })
       }
     } catch (error) {
       console.log('failed to post data to API', error)
