@@ -13,7 +13,7 @@ const PostQuestion: React.FC = () => {
   const postData = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:8080/channel/${id}/post`, {
+      const response = await axios.post(`https://casualquestion.an.r.appspot.com/channel/${id}/post`, {
         content: message,
       });
       setMessage("");

@@ -12,7 +12,7 @@ const Channel: React.FC = () => {
 
 	const fetchData = async () => {
 		try {
-			const response = await axios.get(`http://localhost:8080/channel/${id}`, {
+			const response = await axios.get(`https://casualquestion.an.r.appspot.com/channel/${id}`, {
 				headers: {
 					'Authorization': `Bearer ${user.accessToken}`
 				}

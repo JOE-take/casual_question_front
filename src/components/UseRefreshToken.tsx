@@ -9,7 +9,7 @@ const UseRefreshToken = () => {
 
   const refreshAccessToken = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:8080/refresh');
+      const response = await axios.get('https://casualquestion.an.r.appspot.com/refresh');
       if (response.data && response.data.accessToken) {
         setUser(prev => ({ ...prev, accessToken: response.data.accessToken }));
         return response.data.accessToken;
