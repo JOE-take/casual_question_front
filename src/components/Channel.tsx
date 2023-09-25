@@ -8,7 +8,7 @@ const Channel: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const [data, setData] = useState<any | null>(null);
 	const { user } = useUser();
-  const refreshAccessToken = UseRefreshToken();
+	const refreshAccessToken = UseRefreshToken();
 
 	const fetchData = async () => {
 		try {
@@ -20,7 +20,7 @@ const Channel: React.FC = () => {
 			setData(response.data);
 		} catch (error) {
 			if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
-        await refreshAccessToken();
+				await refreshAccessToken();
 				fetchData();
 			}
 			console.error(error);
@@ -28,18 +28,17 @@ const Channel: React.FC = () => {
 	}
 
 	const formatDate = (isoDate: string) => {
-    const date = new Date(isoDate);
-    const formatter = new Intl.DateTimeFormat('ja-JP', {
-        timeZone: 'Asia/Tokyo',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
-    
-    return formatter.format(date);
+		const date = new Date(isoDate);
+
+		// JSTとしての日付・時間を取得
+		const year = date.getUTCFullYear();
+		const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+		const day = String(date.getUTCDate()).padStart(2, '0');
+		const hours = String(date.getUTCHours()).padStart(2, '0');
+		const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+		const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
+		return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
 	}
 
 	const renderContent = () => {
