@@ -29,6 +29,7 @@ const Channel: React.FC = () => {
 
 	const formatDate = (isoDate: string) => {
 		const date = new Date(isoDate);
+		date.setHours(data.getUTCHours() - 9);
 
 		// JSTとしての日付・時間を取得
 		const year = date.getUTCFullYear();
