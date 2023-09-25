@@ -30,7 +30,6 @@ const Login: React.FC = () => {
           accessToken: response.data.accessToken
         })
       }
-      navigate('/')
     } catch (error) {
       console.log('failed to post data to API', error)
       if (axios.isAxiosError(error) && error.response) {
@@ -44,7 +43,9 @@ const Login: React.FC = () => {
         email: '',
         password: '',
       });
+      return
     }
+      navigate('/')
   };
 
   return (
