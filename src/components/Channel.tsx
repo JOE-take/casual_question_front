@@ -28,14 +28,18 @@ const Channel: React.FC = () => {
 	}
 
 	const formatDate = (isoDate: string) => {
-		const date = new Date(isoDate);
-		const month = date.getMonth() + 1;
-		const day = date.getDate();
-		const hours = date.getHours();
-		const minutes = date.getMinutes();
-		const seconds = date.getSeconds();
-
-		return `${month}/${day} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    const date = new Date(isoDate);
+    const formatter = new Intl.DateTimeFormat('ja-JP', {
+        timeZone: 'Asia/Tokyo',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    
+    return formatter.format(date);
 	}
 
 	const renderContent = () => {
