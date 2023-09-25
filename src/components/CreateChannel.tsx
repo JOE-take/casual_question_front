@@ -9,7 +9,7 @@ const CreateChannel: React.FC = () => {
   const { user } = useUser();
   const refreshAccessToken = UseRefreshToken();
 
-  const createChannel = useCallback(async (retryCount = 0) => {
+  const createChannel = useCallback(async (retryCount: number) => {
     try {
       console.log(user)
       const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/new', { owner: user.userId }, {
@@ -29,6 +29,7 @@ const CreateChannel: React.FC = () => {
           await refreshAccessToken();
           createChannel(retryCount + 1);
         } else {
+          navigate('/login')
           console.error(error)
         }
       }
@@ -36,8 +37,8 @@ const CreateChannel: React.FC = () => {
   }, [navigate, user, refreshAccessToken]);
 
   const handleCreateChannelClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault(); // 必要に応じてデフォルトの動作を防ぐ
-    createChannel(); // 非同期関数を呼び出す
+    event.preventDefault();
+    createChannel(0); 
   };
 
   return (
