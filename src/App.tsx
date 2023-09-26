@@ -14,8 +14,6 @@ import './App.css';
 
 axios.defaults.withCredentials = true;
 
-
-
 function App() {
 
   return (
