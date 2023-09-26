@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 
@@ -28,7 +28,7 @@ const PostQuestion: React.FC = () => {
   // 最初の処理
   const channelExistence = async () => {
     try {
-      const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/${id}/post');
+      const response = await axios.post(`https://casualquestion.an.r.appspot.com/channel/${id}/post`);
       switch (response.status) {
         case 200:
           setStatusMsg('質問を送りましょう！');
@@ -44,7 +44,10 @@ const PostQuestion: React.FC = () => {
       console.log("Error Posting data:", error);
     }
   }
-  channelExistence();
+  
+  useEffect(() => {
+    channelExistence();
+  }, []);
 
   return (
     <div>
