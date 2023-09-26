@@ -6,7 +6,7 @@ const PostQuestion: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [message, setMessage] = useState("");
   const [statusMsg, setStatusMsg] = useState("");
-  
+
   const navigate = useNavigate()
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -29,22 +29,22 @@ const PostQuestion: React.FC = () => {
   const channelExistence = async () => {
     try {
       const response = await axios.get(`https://casualquestion.an.r.appspot.com/channel/${id}/exist`);
-      switch (response.status) {
-        case 200:
-          setStatusMsg('質問を送りましょう！');
-          break;
-        case 400:
-          setStatusMsg('サーバーエラー');
-          break;
-        case 404:
-          navigate('/')
-          break;
-      }
+      setStatusMsg('質問を送りましょう！');
     } catch (error) {
       console.log("Error Posting data:", error);
+      if (axios.isAxiosError(error) && error.response) {
+        switch (error.response.status) {
+          case 400:
+            setStatusMsg('サーバーエラー');
+            break;
+          case 404:
+            navigate('/')
+            break;
+        }
+      }
     }
   }
-  
+
   useEffect(() => {
     channelExistence();
   }, []);
