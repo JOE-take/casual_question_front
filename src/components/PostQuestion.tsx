@@ -33,11 +33,13 @@ const PostQuestion: React.FC = () => {
     } catch (error) {
       console.log("Error Posting data:", error);
       if (axios.isAxiosError(error) && error.response) {
+        console.log("error response", error.response)
         switch (error.response.status) {
           case 400:
-            setStatusMsg('サーバーエラー');
+            setStatusMsg('数分後にもう一度試してください');
             break;
           case 404:
+            console.log('channel doesn\'t exist')
             navigate('/')
             break;
         }
