@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 
 const PostQuestion: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [message, setMessage] = useState("");
+  const [statusMsg, setStatusMsg] = useState("");
   
- const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-  setMessage(e.target.value)
- }
+  const navigate = useNavigate()
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value)
+  }
 
   const postData = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,17 +25,39 @@ const PostQuestion: React.FC = () => {
     }
   }
 
+  // 最初の処理
+  const channelExistence = async () => {
+    try {
+      const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/${id}/post');
+      switch (response.status) {
+        case 200:
+          setStatusMsg('質問を送りましょう！');
+          break;
+        case 400:
+          setStatusMsg('サーバーエラー');
+          break;
+        case 404:
+          navigate('/')
+          break;
+      }
+    } catch (error) {
+      console.log("Error Posting data:", error);
+    }
+  }
+  channelExistence();
+
   return (
     <div>
-      <form onSubmit={ postData }>
+      <form onSubmit={postData}>
         <textarea
-        name="message"
-        placeholder="write some message"
-        value={message}
+          name="message"
+          placeholder="write some message"
+          value={message}
           onChange={handleChange}
-         ></textarea>
+        ></textarea>
         <button type="submit">質問を送る</button>
       </form>
+      <p>{statusMsg}</p>
     </div>
   )
 }
