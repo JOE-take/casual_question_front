@@ -10,7 +10,6 @@ function Nav() {
       <div>
         <nav>
           <Link to="/">ホーム</Link>
-          | <Link to="/channel/new">部屋の作成</Link>
         </nav>
       </div>
     )
