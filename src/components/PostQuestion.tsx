@@ -28,7 +28,7 @@ const PostQuestion: React.FC = () => {
   // 最初の処理
   const channelExistence = async () => {
     try {
-      const response = await axios.post(`https://casualquestion.an.r.appspot.com/channel/${id}/post`);
+      const response = await axios.post(`https://casualquestion.an.r.appspot.com/channel/${id}/exist`);
       switch (response.status) {
         case 200:
           setStatusMsg('質問を送りましょう！');
