@@ -32,15 +32,15 @@ const Signup: React.FC = () => {
       if (axios.isAxiosError(error) && error.response) {
         switch (error.response.status) {
           case 400:
-            seterrMessage('サインアップできません。入力内容を見直してください。') 
+            seterrMessage('サインアップできません。入力内容を見直してください。')
             break;
         }
+        setFormData({
+          user_name: '',
+          email: '',
+          password: '',
+        });
       }
-      setFormData({
-        user_name: '',
-        email: '',
-        password: '',
-      });
     }
   };
 
