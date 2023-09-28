@@ -53,8 +53,8 @@ const Login: React.FC = () => {
       <h1>ログイン</h1>
       <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>
-        email:<input type="text" name="email" onChange={handleChange} /><br />
-        password:<input type="password" name="password" onChange={handleChange} /><br />
+        email:<input type="text" name="email" onChange={handleChange} value={formData.email}/><br />
+        password:<input type="password" name="password" onChange={handleChange} value={formData.password}/><br />
         <button type="submit">Submit</button>
       </form>
     </div>
