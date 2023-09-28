@@ -1,13 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback , useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from './UserContent';
 import UseRefreshToken from './UseRefreshToken';
+import QRCode from 'qrcode.react';
 
 const CreateChannel: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useUser();
   const refreshAccessToken = UseRefreshToken();
+  const [channelID, setChannnelID] = useState("");
 
   const createChannel = useCallback(async (retryCount: number) => {
     try {
@@ -17,15 +19,15 @@ const CreateChannel: React.FC = () => {
           'Authorization': `Bearer ${user.accessToken}`
         }
       });
-      const channelID = response.data.id;
-      if (channelID) {
-        navigate(`/channel/${channelID}`);
+
+      if (response.data.id) {
+        setChannnelID(response.data.id);
       } else {
         console.error("idがレスポンスに含まれていません");
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
-        if (retryCount < 3) {
+        if (retryCount < 2) {
           await refreshAccessToken();
           createChannel(retryCount + 1);
         } else {
@@ -43,7 +45,12 @@ const CreateChannel: React.FC = () => {
 
   return (
     <div>
-      <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
+      {channelID
+      ? <div>
+        
+      </div>
+      : <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
+      }
     </div>
   );
 }
