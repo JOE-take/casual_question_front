@@ -10,7 +10,8 @@ const CreateChannel: React.FC = () => {
   const { user } = useUser();
   const refreshAccessToken = UseRefreshToken();
   const [channelID, setChannnelID] = useState("");
-  const baseURL = document.baseURI;
+
+  const baseURL = "https://joe-take.github.io/casual_question_front/#/";
 
   const createChannel = useCallback(async (retryCount: number) => {
     try {
@@ -49,8 +50,8 @@ const CreateChannel: React.FC = () => {
       {channelID
         ? <div>
           IDは {channelID} です。
-          <QRCodeComponent url={`${baseURL}/${channelID}`} />
-          URL: {`${baseURL}/${channelID}`}
+          <QRCodeComponent url={`${baseURL}${channelID}`} />
+          URL: {`${baseURL}${channelID}`}
         </div>
         : <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
       }
