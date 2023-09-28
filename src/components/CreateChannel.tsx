@@ -46,7 +46,7 @@ const CreateChannel: React.FC = () => {
   };
   
   const redirectToPage = () => {
-    navigate(`${baseURL}channnel/${channelID}`)
+    navigate(`/channnel/${channelID}`)
   }
 
   return (
@@ -56,7 +56,7 @@ const CreateChannel: React.FC = () => {
           IDは {channelID} です。
           <QRCodeComponent url={`${baseURL}${channelID}`} />
           URL: {`${baseURL}${channelID}`}
-          <button onClick={redirectToPage}>質問を見る</button>
+          <br/><button onClick={redirectToPage}>質問を見る</button>
         </div>
         : <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
       }
