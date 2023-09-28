@@ -1,9 +1,9 @@
-import React, { useCallback , useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from './UserContent';
 import UseRefreshToken from './UseRefreshToken';
-import QRCode from 'qrcode.react';
+import QRCodeComponent from './QRCode';
 
 const CreateChannel: React.FC = () => {
   const navigate = useNavigate();
@@ -40,16 +40,18 @@ const CreateChannel: React.FC = () => {
 
   const handleCreateChannelClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    createChannel(0); 
+    createChannel(0);
   };
 
   return (
     <div>
       {channelID
-      ? <div>
-        
-      </div>
-      : <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
+        ? <div>
+          IDは {channelID} です。
+          <QRCodeComponent url={`%PUBLIC_HOME%/${channelID}`} />
+          URL: {`%PUBLIC_HOME%/${channelID}`}
+        </div>
+        : <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
       }
     </div>
   );
