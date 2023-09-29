@@ -46,7 +46,7 @@ const CreateChannel: React.FC = () => {
   };
 
   const redirectToPage = () => {
-    navigate(`/channnel/${channelID}`)
+    navigate(`/channel/${channelID}`)
   }
 
   return (
