@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/casual_question_front/static/css/main.31d6cfe0.css",
-    "main.js": "/casual_question_front/static/js/main.13cb45fa.js",
+    "main.js": "/casual_question_front/static/js/main.ff9cdf74.js",
     "index.html": "/casual_question_front/index.html",
-    "main.13cb45fa.js.map": "/casual_question_front/static/js/main.13cb45fa.js.map"
+    "main.ff9cdf74.js.map": "/casual_question_front/static/js/main.ff9cdf74.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.13cb45fa.js"
+    "static/js/main.ff9cdf74.js"
   ]
 }

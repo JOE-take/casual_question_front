@@ -36,11 +36,6 @@ const Signup: React.FC = () => {
             break;
         }
       }
-      setFormData({
-        user_name: '',
-        email: '',
-        password: '',
-      });
     }
   };
 
@@ -49,9 +44,9 @@ const Signup: React.FC = () => {
       <h1>サインアップ</h1>
       <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>
-        name:<input type="text" name="user_name" onChange={handleChange} /><br />
-        email:<input type="text" name="email" onChange={handleChange} /><br />
-        password:<input type="password" name="password" onChange={handleChange} /><br />
+        name:<input type="text" name="user_name" onChange={handleChange} value={formData.user_name} /><br />
+        email:<input type="text" name="email" onChange={handleChange} value={formData.email} /><br />
+        password:<input type="password" name="password" onChange={handleChange} value={formData.password} /><br />
         <button type="submit">Submit</button>
       </form>
     </div>
