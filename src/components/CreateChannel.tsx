@@ -53,7 +53,7 @@ const CreateChannel: React.FC = () => {
     <div>
       {channelID
         ? <div className='channel-info'>
-          IDは {channelID} です。
+          ID: {channelID}
           <div className='qr-component'>
             <QRCodeComponent url={`${baseURL}${channelID}`} />
           </div>

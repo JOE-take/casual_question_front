@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  font-size: 15px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .channel-info p {
-  margin-top: 20px;
+  margin-top: 10px;
   color: #333;
 }
 
