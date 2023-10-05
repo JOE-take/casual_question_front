@@ -57,8 +57,9 @@ const CreateChannel: React.FC = () => {
           <div className='qr-component'>
             <QRCodeComponent url={`${baseURL}${channelID}`} />
           </div>
-          URL: {`${baseURL}${channelID}`}
-          <br /><button className='url-text' onClick={redirectToPage}>質問を見る</button>
+          <div className='url-text'> <p> URL: {`${baseURL}${channelID}`} </p> </div>
+          <br />
+          <button className='button' onClick={redirectToPage}>質問を見る</button>
         </div>
         : <button className='button' onClick={handleCreateChannelClick}>新しいChannelを作成</button>
       }
