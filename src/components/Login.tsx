@@ -49,7 +49,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='form-container'>
       <h1>ログイン</h1>
       <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>

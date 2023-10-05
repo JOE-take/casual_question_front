@@ -40,8 +40,8 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>サインアップ</h1>
+    <div className='form-container'>
+      <h1>アカウント作成</h1>
       <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>
         name:<input type="text" name="user_name" onChange={handleChange} value={formData.user_name} /><br />
