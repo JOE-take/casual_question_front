@@ -16,7 +16,7 @@ const CreateChannel: React.FC = () => {
   const createChannel = useCallback(async (retryCount: number) => {
     try {
       console.log(user)
-      const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/new', { owner: user.userId }, {
+      const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/new', {
         headers: {
           'Authorization': `Bearer ${user.accessToken}`
         }
