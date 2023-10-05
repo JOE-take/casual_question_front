@@ -16,13 +16,13 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className='home'>
       <h1>Casual Question へようこそ！</h1>
       <form onSubmit={handleSubmit}>
         IDを入力して質問チャンネルへ:
         <input type="text" name="email" onChange={handleChange} />
       </form>
-      <Link to="/channel/new">新しいチャンネルの作成</Link>
+      <Link to="/channel/new" className='link'>新しいチャンネルの作成</Link>
     </div>
   )
 }

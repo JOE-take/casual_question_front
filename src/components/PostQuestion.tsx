@@ -38,8 +38,7 @@ const PostQuestion: React.FC = () => {
           case 400:
             setStatusMsg('数分後にもう一度試してください');
             break;
-          case 404:
-            console.log('channel doesn\'t exist')
+          default:
             navigate('/')
             break;
         }
@@ -52,7 +51,8 @@ const PostQuestion: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="post-question">
+      <h1>質問を送りましょう！</h1>
       <form onSubmit={postData}>
         <textarea
           name="message"
@@ -60,7 +60,7 @@ const PostQuestion: React.FC = () => {
           value={message}
           onChange={handleChange}
         ></textarea>
-        <button type="submit">質問を送る</button>
+        <button type="submit">送信</button>
       </form>
       <p>{statusMsg}</p>
     </div>

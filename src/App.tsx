@@ -9,8 +9,10 @@ import Channel from './components/Channel';
 import CreateChannel from './components/CreateChannel';
 import PostQuestion from './components/PostQuestion';
 import Nav from './components/Nav'
-import { useUser } from './components/UserContent';
-import './App.css';
+import './css/App.css';
+import './css/Nav.css'
+import './css/Form.css'
+import './css/PostQuestion.css'
 
 axios.defaults.withCredentials = true;
 

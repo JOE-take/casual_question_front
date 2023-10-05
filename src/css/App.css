@@ -1,0 +1,45 @@
+body {
+  background-color: #51bcff;
+  font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.home form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.home input {
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.link {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 16px;
+  background-color: #ddd;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.link:hover {
+  text-decoration: underline;
+  background-color: #ccc;
+}
