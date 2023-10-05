@@ -29,7 +29,6 @@ const PostQuestion: React.FC = () => {
   const channelExistence = async () => {
     try {
       const response = await axios.get(`https://casualquestion.an.r.appspot.com/channel/${id}/exist`);
-      setStatusMsg('質問を送りましょう！');
     } catch (error) {
       console.log("Error Posting data:", error);
       if (axios.isAxiosError(error) && error.response) {
