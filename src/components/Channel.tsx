@@ -43,7 +43,7 @@ const Channel: React.FC = () => {
 	const renderContent = () => {
 		if (data && data.length > 0) {
 			return data.map((question: any) => (
-				<div key={question.ID}>
+				<div key={question.ID} className='questions'>
 					{formatDate(question.CreatedAt)}: {question.Content}
 				</div>
 			));
@@ -53,9 +53,9 @@ const Channel: React.FC = () => {
 	}
 
 	return (
-		<div>
-			<button onClick={fetchData}>質問を取得</button>
-			{renderContent()}
+		<div className='q-page-container'>
+			<button className='button' onClick={fetchData}>質問を取得</button>
+			<div className='q-container'> {renderContent()} </div>
 		</div>
 	);
 }
