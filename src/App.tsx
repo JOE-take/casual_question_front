@@ -13,6 +13,7 @@ import './css/App.css';
 import './css/Nav.css'
 import './css/Form.css'
 import './css/PostQuestion.css'
+import './css/Channel.css'
 
 axios.defaults.withCredentials = true;
 

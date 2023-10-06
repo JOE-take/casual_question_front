@@ -16,7 +16,7 @@ const CreateChannel: React.FC = () => {
   const createChannel = useCallback(async (retryCount: number) => {
     try {
       console.log(user)
-      const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/new', {
+      const response = await axios.post('https://casualquestion.an.r.appspot.com/channel/new', {}, {
         headers: {
           'Authorization': `Bearer ${user.accessToken}`
         }
@@ -52,13 +52,16 @@ const CreateChannel: React.FC = () => {
   return (
     <div>
       {channelID
-        ? <div>
-          IDは {channelID} です。
-          <QRCodeComponent url={`${baseURL}${channelID}`} />
-          URL: {`${baseURL}${channelID}`}
-          <br /><button onClick={redirectToPage}>質問を見る</button>
+        ? <div className='channel-info'>
+          ID: {channelID}
+          <div className='qr-component'>
+            <QRCodeComponent url={`${baseURL}${channelID}`} />
+          </div>
+          <div className='url-text'> <p> URL: {`${baseURL}${channelID}`} </p> </div>
+          <br />
+          <button className='button' onClick={redirectToPage}>質問を見る</button>
         </div>
-        : <button onClick={handleCreateChannelClick}>新しいChannelを作成</button>
+        : <button className='button' onClick={handleCreateChannelClick}>新しいChannelを作成</button>
       }
     </div>
   );
