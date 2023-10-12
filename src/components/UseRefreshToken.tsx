@@ -4,15 +4,18 @@ import { useUser } from './UserContent';
 import { useNavigate } from 'react-router-dom';
 
 const UseRefreshToken = () => {
-  const { setUser } = useUser();
+  const { user, setUser } = useUser();
   const navigate = useNavigate();
 
   const refreshAccessToken = useCallback(async () => {
     try {
       const response = await axios.get('https://casualquestion.an.r.appspot.com/refresh');
       if (response.data && response.data.accessToken) {
-        setUser(prev => ({ ...prev, accessToken: response.data.accessToken }));
-        return response.data.accessToken;
+        const newUser = user;
+        user.accessToken = response.data.accessToken;
+        setUser(newUser);
+        return;
+
       } else {
         console.error("新しいアクセストークンがレスポンスに含まれていません");
         navigate('/login');
