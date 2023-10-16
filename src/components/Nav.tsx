@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Nav() {
   const { user } = useUser();
 
-  if (user && user.userId && user.userName && user.accessToken) {
+  if (user && user.accessToken) {
     return (
       <div>
         <nav>
