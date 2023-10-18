@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 import axios from 'axios';
 import { useUser } from './UserContent';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router';
 
-const UseRefreshToken = () => {
+const UseRefreshToken = (navigate: NavigateFunction) => {
   const { user, setUser } = useUser();
-  const navigate = useNavigate();
 
   const refreshAccessToken = useCallback(async () => {
     try {
