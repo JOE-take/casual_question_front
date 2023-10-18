@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from './UserContent';
 import UseRefreshToken from './UseRefreshToken';
 
@@ -8,6 +8,7 @@ const Channel: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const [data, setData] = useState<any | null>(null);
 	const { user } = useUser();
+	const navigate = useNavigate();
 	const refreshAccessToken = UseRefreshToken();
 
 	const fetchData = async () => {
@@ -20,8 +21,12 @@ const Channel: React.FC = () => {
 			setData(response.data);
 		} catch (error) {
 			if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
+			try {
 				await refreshAccessToken();
 				fetchData();
+			} catch (error) {
+				navigate('/login');
+			}
 			}
 			console.error(error);
 		}

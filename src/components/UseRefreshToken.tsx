@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 import axios from 'axios';
 import { useUser } from './UserContent';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router';
 
 const UseRefreshToken = () => {
   const { user, setUser } = useUser();
-  const navigate = useNavigate();
 
   const refreshAccessToken = useCallback(async () => {
     try {
@@ -18,15 +17,13 @@ const UseRefreshToken = () => {
 
       } else {
         console.error("新しいアクセストークンがレスポンスに含まれていません");
-        navigate('/login');
         throw new Error("Token refresh failed");
       }
     } catch (error) {
       console.error("トークンの更新に失敗しました", error);
-      navigate('/login');
       throw error;
     }
-  }, [setUser, navigate]);
+  }, [setUser]);
 
   return refreshAccessToken;
 };
