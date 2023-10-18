@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from './components/UserContent';
