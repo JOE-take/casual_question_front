@@ -8,7 +8,7 @@ import QRCodeComponent from './QRCode';
 const CreateChannel: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useUser();
-  const refreshAccessToken = UseRefreshToken(navigate);
+  const refreshAccessToken = UseRefreshToken();
   const [channelID, setChannnelID] = useState("");
 
   const baseURL = "https://joe-take.github.io/casual_question_front/#/";

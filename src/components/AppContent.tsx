@@ -12,30 +12,30 @@ import PostQuestion from './PostQuestion';
 
 function AppContent() {
   const navigate = useNavigate();
-  const refreshAccessToken = useRefreshToken(navigate);
+  const refreshAccessToken = useRefreshToken();
   const [refreshCompleted, setRefreshCompleted] = useState(false);
 
   useEffect(() => {
     refreshAccessToken();
     setRefreshCompleted(true);
   }, [refreshAccessToken]);
-  
+
   if (!refreshCompleted) {
     return <Loading />
   }
-  
+
   return (
-      <div>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="channel/new" element={<CreateChannel />} />
-            <Route path="/channel/:id" element={<Channel />} />
-            <Route path="/:id" element={<PostQuestion />} />
-          </Routes>
-      </div>
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="channel/new" element={<CreateChannel />} />
+        <Route path="/channel/:id" element={<Channel />} />
+        <Route path="/:id" element={<PostQuestion />} />
+      </Routes>
+    </div>
   );
 }
 

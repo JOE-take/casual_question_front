@@ -9,7 +9,7 @@ const Channel: React.FC = () => {
 	const [data, setData] = useState<any | null>(null);
 	const { user } = useUser();
 	const navigate = useNavigate();
-	const refreshAccessToken = UseRefreshToken(navigate);
+	const refreshAccessToken = UseRefreshToken();
 
 	const fetchData = async () => {
 		try {
@@ -21,8 +21,12 @@ const Channel: React.FC = () => {
 			setData(response.data);
 		} catch (error) {
 			if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
+			try {
 				await refreshAccessToken();
 				fetchData();
+			} catch (error) {
+				navigate('/login');
+			}
 			}
 			console.error(error);
 		}
