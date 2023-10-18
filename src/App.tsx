@@ -1,19 +1,12 @@
-import React from 'react';
 import axios from 'axios';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import { UserProvider } from './components/UserContent';
-import Home from "./components/Home";
-import Signup from './components/Signup';
-import Login from './components/Login';
-import Channel from './components/Channel';
-import CreateChannel from './components/CreateChannel';
-import PostQuestion from './components/PostQuestion';
-import Nav from './components/Nav'
+import {HashRouter as Router} from 'react-router-dom';
 import './css/App.css';
 import './css/Nav.css'
 import './css/Form.css'
 import './css/PostQuestion.css'
 import './css/Channel.css'
+import AppContent from './components/AppContent';
+import { UserProvider } from './components/UserContent';
 
 axios.defaults.withCredentials = true;
 
@@ -22,17 +15,7 @@ function App() {
   return (
     <UserProvider>
       <Router>
-        <div>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="channel/new" element={<CreateChannel />} />
-            <Route path="/channel/:id" element={<Channel />} />
-            <Route path="/:id" element={<PostQuestion />} />
-          </Routes>
-        </div>
+        <AppContent />
       </Router>
     </UserProvider>
   );
