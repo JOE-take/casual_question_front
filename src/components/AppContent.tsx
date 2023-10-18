@@ -11,13 +11,15 @@ import Loading from './Loading';
 import PostQuestion from './PostQuestion';
 
 function AppContent() {
-  const navigate = useNavigate();
   const refreshAccessToken = useRefreshToken();
   const [refreshCompleted, setRefreshCompleted] = useState(false);
 
   useEffect(() => {
-    refreshAccessToken();
-    setRefreshCompleted(true);
+    async function refreshAndSetComplete() {
+      await refreshAccessToken();
+      setRefreshCompleted(true);
+    }
+    refreshAndSetComplete();
   }, [refreshAccessToken]);
 
   if (!refreshCompleted) {
