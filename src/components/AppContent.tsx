@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useRefreshToken from './UseRefreshToken';
 import { HashRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Home from "./Home";
@@ -7,16 +7,23 @@ import Signup from './Signup';
 import Login from './Login';
 import CreateChannel from './CreateChannel';
 import Channel from './Channel';
+import Loading from './Loading';
 import PostQuestion from './PostQuestion';
 
 function AppContent() {
   const navigate = useNavigate();
   const refreshAccessToken = useRefreshToken(navigate);
+  const [refreshCompleted, setRefreshCompleted] = useState(false);
 
   useEffect(() => {
     refreshAccessToken();
+    setRefreshCompleted(true);
   }, [refreshAccessToken]);
-
+  
+  if (!refreshCompleted) {
+    return <Loading />
+  }
+  
   return (
       <div>
           <Nav />
