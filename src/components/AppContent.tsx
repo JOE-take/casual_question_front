@@ -12,17 +12,21 @@ import PostQuestion from './PostQuestion';
 
 function AppContent() {
   const refreshAccessToken = useRefreshToken();
-  const [refreshCompleted, setRefreshCompleted] = useState(false);
+  const [checkRefreshCompleted, setCheckRefreshCompleted] = useState(false);
 
   useEffect(() => {
     async function refreshAndSetComplete() {
-      await refreshAccessToken();
-      setRefreshCompleted(true);
+      try {
+        await refreshAccessToken();
+        setCheckRefreshCompleted(true);
+      } catch (error) {
+        setCheckRefreshCompleted(true);
+      }
     }
     refreshAndSetComplete();
   }, [refreshAccessToken]);
 
-  if (!refreshCompleted) {
+  if (!checkRefreshCompleted) {
     return <Loading />
   }
 
