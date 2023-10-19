@@ -29,23 +29,19 @@ const Login: React.FC = () => {
           userId: response.data.userId,
           accessToken: response.data.accessToken
         })
+        navigate('/')
       }
     } catch (error) {
       console.log('failed to post data to API', error)
       if (axios.isAxiosError(error) && error.response) {
-        switch (error.response.status) {
-          case 400:
-            seterrMessage('ログインできません。内容を見直してください。')
-            break;
-        }
+        seterrMessage('ログインできません。内容を見直してください。')
         setFormData({
           email: '',
           password: '',
         });
-        return
       }
+      return
     }
-    navigate('/')
   };
 
   return (
@@ -53,8 +49,8 @@ const Login: React.FC = () => {
       <h1>ログイン</h1>
       <p>{errMessage}</p>
       <form onSubmit={handlerSubmit}>
-        email:<input type="text" name="email" onChange={handleChange} value={formData.email}/><br />
-        password:<input type="password" name="password" onChange={handleChange} value={formData.password}/><br />
+        email:<input type="text" name="email" onChange={handleChange} value={formData.email} /><br />
+        password:<input type="password" name="password" onChange={handleChange} value={formData.password} /><br />
         <button type="submit">Submit</button>
       </form>
     </div>
